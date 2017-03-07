@@ -1,0 +1,29 @@
+{
+  "name": "crechejs",
+  "version": "1.0.0",
+  "description": "Creche nodejs application ",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mahieddine-ichir/creche.git"
+  },
+  "keywords": [
+    "creche",
+    "nodejs",
+    "expressjs"
+  ],
+  "author": "mahieddine.ichir@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mahieddine-ichir/creche/issues"
+  },
+  "homepage": "https://github.com/mahieddine-ichir/creche#readme",
+  "dependencies": {
+    "body-parser": "^1.17.0",
+    "express": "^4.15.0"
+  }
+}

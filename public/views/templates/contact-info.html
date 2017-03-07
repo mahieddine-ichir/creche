@@ -1,0 +1,25 @@
+<md-dialog flex=50>
+<md-toolbar>
+	<div class="md-toolbar-tools" layout-align="center center">
+	{{enfant.name}}
+	</div>
+</md-toolbar>
+<md-dialog-content>
+<div class="md-dialog-content">      
+	<div ng-repeat="c in enfant.contacts" layout="column">
+		<h2>{{c.name}}</h2>
+		<ul>
+		<li><b>Tél</b> : {{c.numero}}</li>		
+		<li><b>Adresse</b> : {{c.addresse}}</li
+		</ul>
+	</div>
+</div>
+</md-dialog-content>
+
+<md-dialog-actions layout="row">
+  <md-button ng-click="close()">
+  Fermer
+  </md-button>      
+</md-dialog-actions>
+
+</md-dialog>

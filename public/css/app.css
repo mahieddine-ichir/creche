@@ -1,0 +1,36 @@
+body {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.card-media {
+  background-color: #999999;
+}
+
+md-toolbar {
+	border-radius: 5px;
+}
+
+.fixed2 {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+}
+
+.fixed {
+	position: relative;
+
+}
+
+.border {
+	border: .1em dashed;
+}
+
+.md-media-sm {
+	width: 100px!important;
+	height: 100px!important;
+}
+
+.card-media {
+	background-color: #ffffff;
+}

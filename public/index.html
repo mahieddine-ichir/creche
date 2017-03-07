@@ -1,0 +1,49 @@
+<html lang="en" >
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Angular Material style sheet -->
+  <link rel="stylesheet" href="libs/angular_material/1.1.0/angular-material.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" type="text/css" href="css/app.css">
+</head>
+<body ng-app="myApp" ng-cloak>
+
+<div layout="column" layout-fill>
+    <md-toolbar>
+    <div class="md-toolbar-tools" layout="row" layout-align="center center">
+        <md-button ng-href="#/deposer">
+          <md-icon>check</md-icon>
+          Déposer ou Récupérer un enfant
+        </md-button>
+        <md-button ng-href="#/add">
+          <md-icon>note_add</md-icon>
+          Enregister un enfant (Réservé à l'administration)
+        </md-button>
+    </div>
+    </md-toolbar> 
+      <md-content layout="column" layout-padding flex>        
+        <ng-view></ng-view>
+      </md-content>
+</div>
+
+  <!-- Angular Material requires Angular.js Libraries -->
+  <script src="libs/angularjs/1.5.5/angular.js"></script>
+  <script src="libs/angularjs/1.5.5/angular-animate.min.js"></script>
+  <script src="libs/angularjs/1.5.5/angular-aria.min.js"></script>
+  <script src="libs/angularjs/1.5.5/angular-messages.min.js"></script>
+  <script src="libs/angularjs/1.5.5/angular-route.js"></script>
+
+  <!-- Angular Material Library -->
+  <script src="libs/angular_material/1.1.0/angular-material.min.js"></script>
+
+  <script src="js/services.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+
+
+<!--
+Copyright 2016 Google Inc. All Rights Reserved. 
+Use of this source code is governed by an MIT-style license that can be in foundin the LICENSE file at http://material.angularjs.org/license.
+-->
+</html>

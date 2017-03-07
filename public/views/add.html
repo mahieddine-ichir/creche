@@ -1,0 +1,59 @@
+
+<div layout="row" layout-align="end center" class="" class="md-toolbar">
+	<md-button class="md-raised">
+		<md-icon>clear</md-icon>
+		Annuler
+	</md-button>
+	<md-button class="md-raised md-primary" ng-click="add(e)">
+		<md-icon>check</md-icon>
+		Enregistrer
+	</md-button>
+</div>
+
+<div layout="column" class="">
+<h3>Etat civil</h3>
+<div layout="row">
+
+  <md-input-container flex="60">
+    <label>Nom et Prénom de l'enfant</label>
+    <input ng-model="e.name" type="text" />
+  </md-input-container>
+
+  <md-input-container flex>
+    <label>Date de naissance</label>
+    <md-datepicker ng-model="e.date_of_birth"></md-datepicker>
+  </md-input-container>
+
+</div>
+</div>
+
+<div class="">
+<h4>Adresse</h4>
+<mic-address></mic-address>
+</div>
+
+<div class="">
+<h3>Contacts</h3>
+
+<div>
+<mic-contact ng-repeat="c in e.contacts"></mic-contact>
+<md-button ng-click="addContact(e)">	
+Supprimer
+</md-button>
+</div>
+
+<md-button ng-click="addContact(e)">	
+Ajouter un contact
+</md-button>
+</div>
+
+<div layout="row" layout-align="end center" class="" class="md-toolbar">
+	<md-button class="md-raised">
+		<md-icon>clear</md-icon>
+		Annuler
+	</md-button>
+	<md-button class="md-raised md-primary" ng-click="add(e)">
+		<md-icon>check</md-icon>
+		Enregistrer
+	</md-button>
+</div>

@@ -1,0 +1,39 @@
+<div layout="column" class="border" layout-padding>
+<div layout="row">
+  <md-input-container flex="50">
+    <label>Nom et Prénom</label>
+    <input type="text">
+  </md-input-container>
+  <md-input-container flex="30">
+    <label>Numéro de téléphone</label>
+    <input type="text">
+  </md-input-container>
+  <md-input-container flex>
+    <label>Lien de parenté</label>
+    <input type="text">
+  </md-input-container>
+</div>
+
+<md-checkbox ng-model="addressSame">
+  Utiliser la même adresse que l'enfant
+</md-checkbox>
+
+<div ng-hide="addressSame" layout="column">
+<md-input-container>
+  <label>Adresse</label>
+  <input type="text" />
+</md-input-container>
+
+<div layout="row">
+  <md-input-container flex="20">
+    <label>Code postal</label>
+    <input type="number">
+  </md-input-container>
+  <md-input-container flex="30">
+    <label>Ville</label>
+    <input type="text">
+  </md-input-container>
+</div>
+</div>
+
+</div>

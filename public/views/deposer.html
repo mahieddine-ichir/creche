@@ -1,9 +1,38 @@
-<md-input-container flex>
+
+<div class="column">
+<md-input-container>
   <label>Tapez un nom pour filtrer</label>
   <md-icon>search</md-icon>
   <input ng-model="recherche" type="text">
 </md-input-container>
 
+<md-toolbar class="md-hue-2">
+  <h2 class="md-toolbar-tools"">
+    <span>Enfants non encore déposés</span>
+  </h2>
+</md-toolbar>
+
+<div layout="row">
+  <span ng-repeat='e in enfants | filter:absent | filter:recherche'>
+    <mic-enfant enfant="e"></mic-enfant>
+  </span>
+</div>
+</div>
+
+
+<md-toolbar class="md-hue-1">
+  <h2 class="md-toolbar-tools"">
+    <span>Enfants déposés</span>
+  </h2>
+</md-toolbar>
+
+<div layout="row">
+<div ng-repeat='e in enfants | filter:{status: "depose"} | filter:recherche'>
+  <mic-enfant enfant="e"></mic-enfant>
+</div>
+</div>
+
+<!--
 <div flex-xs flex-gt-xs="30" layout="row" layout-xs="column">
   <md-card ng-repeat='e in eleves | filter:recherche'>
     <md-card-title>
@@ -20,3 +49,4 @@
     </md-card-actions>
   </md-card>
 </div>
+-->
