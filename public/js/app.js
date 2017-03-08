@@ -38,6 +38,93 @@ app.config(function($routeProvider) {
 
 });
 
+app.run(function($rootScope, $mdPanel) {
+
+
+	// $mdPanel.newPanelGroup('toolbar', {
+ //      maxOpen: 2
+ //    });
+
+ //    $mdPanel.newPanelGroup('menus', {
+ //      maxOpen: 3
+ //    });
+
+    $rootScope.showMenu = function($event) {
+
+ 		var panelPosition = $mdPanel.newPanelPosition()
+ 			.relativeTo($event.srcElement)
+ 			.addPanelPosition(
+            	$mdPanel.xPosition.ALIGN_START,
+            	$mdPanel.yPosition.BELOW
+            	);
+ 			//.start();
+	        //.absolute()
+	        //.top('50%')
+	        //.left('50%');
+
+		// var panelAnimation = $mdPanel.newPanelAnimation()
+	 //        .targetEvent($event)
+	 //        .defaultAnimation('md-panel-animate-fly')
+	 //        .closeTo('.show-button');
+
+var config = {
+      //cattachTo: angular.element(document.body),
+      controller: 'MenuController',
+      controllerAs: 'ctrl',
+      position: panelPosition,
+      locals: {
+          items: [
+          	{name: 'Home', path: '/'},
+          	{name: 'Ajouter un enfant', path: '/add'}
+          ]
+	  },
+	  disableParentScroll: true,
+      //animation: panelAnimation,
+      targetEvent: $event,
+      templateUrl: 'views/templates/menu.html',
+      clickOutsideToClose: true,
+      escapeToClose: true,
+      focusOnOpen: true
+    }
+
+		// var position = $mdPanel.newPanelPosition()
+  //         	.relativeTo($event.srcElement)
+  //         	.addPanelPosition(
+  //           	$mdPanel.xPosition.ALIGN_START,
+  //           	$mdPanel.yPosition.BELOW
+  //         	);
+
+  //     	var config = {
+	 //        id: 'toolbar_menu',
+	 //        attachTo: angular.element(document.body),
+	 //        //controller: PanelMenuCtrl,
+	 //        //controllerAs: 'ctrl',
+	 //        controller: 'MenuController',
+	 //        templateUrl: 'views/templates/menu.html',
+	 //        position: position,
+	 //        panelClass: 'menu-panel-container',
+	 //        locals: {
+	 //          items: [
+	 //          	'Ajouter un enfant'
+	 //          ]
+	 //        },
+	 //        openFrom: $event,
+	 //        focusOnOpen: true,
+	 //        zIndex: 0,
+	 //        propagateContainerEvents: true,
+	 //        groupName: ['toolbar', 'menus']
+		// };
+
+	$mdPanel.open(config)
+        .then(function(result) {
+          $rootScope.panelRef = result;
+        });
+
+		// $mdPanel.open(config);
+    };
+
+});
+
 app.directive('micAddress', function() {
 	return {
 		restrict : 'E',
@@ -60,6 +147,12 @@ app.directive('micEnfant', function() {
 			enfant: '='
 		},
 		controller: function($scope, $mdDialog) {
+
+			$scope.depose = function(e) {
+				console.log('depose '+e);
+				// TODO save into service
+				e.status = 'depose';
+			};
 
 			$scope.contactInfo = function(ev) {
 				// var dlg = $mdDialog
@@ -125,7 +218,8 @@ app.filter('age', function() {
 	};
 });
 
-app.controller('DeposerController', function($scope, BackendService) {
+app.controller('DeposerController', function($scope, BackendService) {	
+
 	BackendService.all(function(resp) {
 		$scope.enfants = resp.data;
 	}, function(resp) {
@@ -134,7 +228,8 @@ app.controller('DeposerController', function($scope, BackendService) {
 
 	$scope.absent = function(enfant) {
 		return !enfant.status || enfant.status != 'depose';
-	};	
+	};
+
 });
 
 app.controller('AjouterEnfantController', function($scope, BackendService, $location) {
@@ -184,6 +279,18 @@ app.controller('AjouterEnfantController', function($scope, BackendService, $loca
  //    }
 // });
 
+});
+
+app.controller('MenuController', function($scope, mdPanelRef, $location) {
+	$scope.closeMenu = function() {
+		mdPanelRef.close();
+	};
+
+	$scope.path = function(path) {
+		console.log('path to '+path);
+		$location.path(path);
+		mdPanelRef.close();
+	};
 });
 
 /*

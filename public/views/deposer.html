@@ -6,47 +6,9 @@
   <input ng-model="recherche" type="text">
 </md-input-container>
 
-<md-toolbar class="md-hue-2">
-  <h2 class="md-toolbar-tools"">
-    <span>Enfants non encore déposés</span>
-  </h2>
-</md-toolbar>
-
 <div layout="row">
   <span ng-repeat='e in enfants | filter:absent | filter:recherche'>
     <mic-enfant enfant="e"></mic-enfant>
   </span>
 </div>
 </div>
-
-
-<md-toolbar class="md-hue-1">
-  <h2 class="md-toolbar-tools"">
-    <span>Enfants déposés</span>
-  </h2>
-</md-toolbar>
-
-<div layout="row">
-<div ng-repeat='e in enfants | filter:{status: "depose"} | filter:recherche'>
-  <mic-enfant enfant="e"></mic-enfant>
-</div>
-</div>
-
-<!--
-<div flex-xs flex-gt-xs="30" layout="row" layout-xs="column">
-  <md-card ng-repeat='e in eleves | filter:recherche'>
-    <md-card-title>
-      <md-card-title-text>
-        <span class="md-headline">{{e.name}}</span>
-        <span class="md-subhead">{{e.age}} ans</span>
-      </md-card-title-text>
-      <md-card-title-media>
-        <div class="md-media-lg card-media"></div>
-      </md-card-title-media>
-    </md-card-title>
-    <md-card-actions layout="row" layout-align="end center">
-      <md-button><md-icon>check</md-icon>Deposer</md-button>
-    </md-card-actions>
-  </md-card>
-</div>
--->

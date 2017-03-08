@@ -1,4 +1,4 @@
-<md-card>
+<md-card ng-click="depose(enfant)">
   <md-card-title layout-padding>
     <md-card-title-text>
       <span class="md-headline">{{enfant.name}}</span>
@@ -9,15 +9,5 @@
         <img ng-src="{{enfant.image}}" class="md-card-image"  />
       </div>
     </md-card-title-media>
-
   </md-card-title>
-  <md-card-actions layout="row" layout-align="start center">
-    <md-button ng-click="contactInfo($event)">
-      Fiche
-    </md-button>
-    <div layout="row" layout-align="end end" flex>
-      <md-button ng-show='enfant.status != "depose"'><md-icon>check</md-icon>Déposer</md-button>
-      <md-button ng-show='enfant.status == "depose"'><md-icon>highlight_off</md-icon>Récupérer</md-button>
-    </div>
-  </md-card-actions>
 </md-card>

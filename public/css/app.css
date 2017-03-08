@@ -5,6 +5,7 @@ body {
 
 .card-media {
   background-color: #999999;
+  width: 40px;
 }
 
 md-toolbar {

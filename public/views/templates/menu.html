@@ -1,0 +1,13 @@
+<div class="menu-panel" md-whiteframe="4"> 
+  <div class="menu-content">
+   <div class="menu-item" ng-repeat="item in ctrl.items">
+        <button class="md-button" ng-click="path(item.path)">{{item.name}}</button> 
+   </div> 
+   <md-divider></md-divider> 
+   <div class="menu-item"> 
+        <button class="md-button" ng-click="closeMenu()"> 
+                <span>Close Menu</span> 
+        </button> 
+    </div> 
+  </div> 
+</div>
