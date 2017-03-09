@@ -1,20 +1,5 @@
 var app = angular.module('myApp', ['ngMaterial', 'ngRoute', 'app-services']);
-app.config(function($mdThemingProvider) {
-
-  // Extend the red theme with a different color and make the contrast color black instead of white.
-  // For example: raised button text will be black instead of white.
-  // var neonRedMap = $mdThemingProvider.extendPalette('red', {
-  //   '500': '#ff0000',
-  //   'contrastDefaultColor': 'dark'
-  // });
-
-  // Register the new color palette map with the name <code>neonRed</code>
-  // $mdThemingProvider.definePalette('neonRed', neonRedMap);
-
-  // Use that theme for the primary intentions
-  //$mdThemingProvider.theme('default').primaryPalette('neonRed');
-
-});
+app.config(function($mdThemingProvider) {});
 app.config(function($routeProvider) {
 
 	$routeProvider
@@ -39,15 +24,6 @@ app.config(function($routeProvider) {
 });
 
 app.run(function($rootScope, $mdPanel) {
-
-
-	// $mdPanel.newPanelGroup('toolbar', {
- //      maxOpen: 2
- //    });
-
- //    $mdPanel.newPanelGroup('menus', {
- //      maxOpen: 3
- //    });
 
     $rootScope.showMenu = function($event) {
 
@@ -74,7 +50,8 @@ var config = {
       position: panelPosition,
       locals: {
           items: [
-          	{name: 'Home', path: '/'},
+          	{name: 'Accueil', path: '/'},
+          	{name: 'Tableau de bord', path: '/'},
           	{name: 'Ajouter un enfant', path: '/add'}
           ]
 	  },
@@ -155,16 +132,6 @@ app.directive('micEnfant', function() {
 			};
 
 			$scope.contactInfo = function(ev) {
-				// var dlg = $mdDialog
-			 //      			.alert()
-			 //        		.parent(angular.element(document.querySelector('#popupContainer')))
-			 //        		.clickOutsideToClose(true)
-			 //        		.title(e.name)
-			 //        		.templateUrl("templates/contact-info.html")
-			        		//.textContent('<mic-contact-info contact="e.contacts"></mic-contact-info>')
-			        		//.ariaLabel('Alert Dialog Demo')			        		
-			        		// .ok('Fermer')
-			        		// .targetEvent(ev);
 
 			    var dlg = {
 			    	multiple: true,
@@ -176,16 +143,13 @@ app.directive('micEnfant', function() {
       				parent: angular.element(document.body),
       				targetEvent: ev,
       				clickOutsideToClose:true
-      				//fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
     			};
 
 				$mdDialog.show(dlg)
 					.then(function(answer) {
 						console.log('Dialog closed '+answer);
-      					//$scope.status = 'You said the information was "' + answer + '".';
     				}, function() {
     					console.log('Dialog canceled ');
-      					//$scope.status = 'You cancelled the dialog.';
     				});
 			 };
 		}
@@ -262,22 +226,6 @@ app.controller('AjouterEnfantController', function($scope, BackendService, $loca
 			console.error(resp);
 		});
 	}
-
-	// var el = document.getElementById('menuAdd');
-	// var elTop = el.getBoundingClientRect().top - document.body.getBoundingClientRect().top;
-
-	// window.addEventListener('scroll', function() {
-	// 	console.log('scrol >>');
- //    if (document.documentElement.scrollTop > elTop){
- //        el.style.position = 'fixed';
- //        el.style.top = '0px';
- //    }
- //    else
- //    {
- //        el.style.position = 'static';
- //        el.style.top = 'auto';
- //    }
-// });
 
 });
 

@@ -35,3 +35,9 @@ md-toolbar {
 .card-media {
 	background-color: #ffffff;
 }
+
+.menu-panel {
+	background-color: #fff;
+	opacity: 0.9;
+	border-radius: 5px;
+}

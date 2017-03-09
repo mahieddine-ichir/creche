@@ -15,7 +15,7 @@ var data = [{
 		mois : '11',
 		jour: '23'
 	},
-	image: 'images/mic.jpg',
+	image: 'images/jenkins.jpg',
 	contacts: [
 		{
 			name: 'Mederreg Lotfi',
@@ -30,8 +30,7 @@ var data = [{
 		mois : '06',
 		jour: '23'
 	},
-	status: "depose",
-	image: 'images/mic.jpg'
+	image: 'images/jenkins.jpg'
 }, {
 	name: 'Ania Mederreg',
 	naissance: {
@@ -39,8 +38,17 @@ var data = [{
 		mois : '02',
 		jour: '29'
 	},
-	status: "depose",
-	image: 'images/mic.jpg'
+	status: "absent",
+	image: 'images/jenkins.jpg'
+}, {
+	name: 'Meissa Mederreg',
+	naissance: {
+		annee : '2012',
+		mois : '11',
+		jour: '11'
+	},
+	status: "absent",
+	image: 'images/jenkins.jpg'
 }];
 
 router.get('/', function(req, resp, next) {

@@ -6,7 +6,7 @@
   <input ng-model="recherche" type="text">
 </md-input-container>
 
-<div layout="row">
+<div layout="row" layout-wrap>
   <span ng-repeat='e in enfants | filter:absent | filter:recherche'>
     <mic-enfant enfant="e"></mic-enfant>
   </span>
