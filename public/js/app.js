@@ -126,7 +126,6 @@ app.directive('micEnfant', function() {
 		controller: function($scope, $mdDialog) {
 
 			$scope.depose = function(e) {
-				console.log('depose '+e);
 				// TODO save into service
 				e.status = 'depose';
 			};
@@ -183,6 +182,8 @@ app.filter('age', function() {
 });
 
 app.controller('DeposerController', function($scope, BackendService) {	
+
+	$scope.today = new Date().toLocaleDateString("fr-FR", {weekday: "long", year: "numeric", month: "long", day: "numeric"});
 
 	BackendService.all(function(resp) {
 		$scope.enfants = resp.data;

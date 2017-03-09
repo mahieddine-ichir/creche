@@ -41,3 +41,31 @@ md-toolbar {
 	opacity: 0.9;
 	border-radius: 5px;
 }
+
+.fade.ng-leave {
+  animation: 0.5s linear all;
+  opacity: 0;
+}
+
+.fade.ng-leave-active {
+  opacity: 1;
+}
+
+.fade.ng-leave {
+  animation: my_fade_animation 0.5s linear;
+  -webkit-animation: my_fade_animation 0.5s linear;
+}
+
+@keyframes my_fade_animation {
+  from { opacity:1; }
+  to { opacity:0; }
+}
+
+@-webkit-keyframes my_fade_animation {
+  from { opacity:1; }
+  to { opacity:0; }
+}
+
+.capitalize {
+	text-transform: capitalize;
+}

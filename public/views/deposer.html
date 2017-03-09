@@ -1,4 +1,13 @@
 
+<div layout="row" layout-align="space-between center">
+  <span></span>
+  <div class="capitalize">{{today}}</div>
+</div>
+
+<h4>{{(enfants | filter:{status: "depose"}).length}} déposés / {{enfants.length}} enfants</h4>
+
+<md-divider></md-divider>
+
 <div class="column">
 <md-input-container>
   <label>Tapez un nom pour filtrer</label>
@@ -7,7 +16,7 @@
 </md-input-container>
 
 <div layout="row" layout-wrap>
-  <span ng-repeat='e in enfants | filter:absent | filter:recherche'>
+  <span ng-repeat='e in enfants | filter:absent | filter:recherche' class="fade">
     <mic-enfant enfant="e"></mic-enfant>
   </span>
 </div>
