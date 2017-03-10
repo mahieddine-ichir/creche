@@ -1,5 +1,5 @@
 
-<div layout="row" layout-align="end center" class="" class="md-toolbar">
+<div layout-align-xs="column" layout="row" layout-align="end center" class="md-toolbar">
 	<md-button class="md-raised">
 		<md-icon>clear</md-icon>
 		Annuler
@@ -10,16 +10,16 @@
 	</md-button>
 </div>
 
-<div layout="column" class="">
+<div layout="column">
 <h3>Etat civil</h3>
-<div layout="row">
+<div layout="row" layout-align-xs="column">
 
-  <md-input-container flex="60">
+  <md-input-container flex="60" flex-xs="100">
     <label>Nom et Prénom de l'enfant</label>
     <input ng-model="e.name" type="text" />
   </md-input-container>
 
-  <md-input-container flex>
+  <md-input-container flex flex-xs="100">
     <label>Date de naissance</label>
     <md-datepicker ng-model="e.date_of_birth"></md-datepicker>
   </md-input-container>

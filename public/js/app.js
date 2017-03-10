@@ -17,13 +17,17 @@ app.config(function($routeProvider) {
 		templateUrl: 'views/add.html',
 		controller: 'AjouterEnfantController'
 	})
+	.when('/dashboard', {
+		templateUrl: 'views/dashboard.html',
+		controller: 'DashboardController'
+	})
 	.otherwise({
 		redirectTo: '/deposer'
 	});
 
 });
 
-app.run(function($rootScope, $mdPanel) {
+app.run(function($rootScope, $mdPanel, $mdDialog) {
 
     $rootScope.showMenu = function($event) {
 
@@ -51,7 +55,7 @@ var config = {
       locals: {
           items: [
           	{name: 'Accueil', path: '/'},
-          	{name: 'Tableau de bord', path: '/'},
+          	{name: 'Tableau de bord', path: '/dashboard'},
           	{name: 'Ajouter un enfant', path: '/add'}
           ]
 	  },
@@ -100,6 +104,29 @@ var config = {
 		// $mdPanel.open(config);
     };
 
+
+    $rootScope.contactInfo = function(e, ev) {
+
+	    var dlg = {
+	    	multiple: true,
+				controller: 'DialogController',
+				templateUrl: 'views/templates/contact-info.html',
+				locals: {
+					enfant: e
+				},
+				parent: angular.element(document.body),
+				targetEvent: ev,
+				clickOutsideToClose:true
+		};
+
+		$mdDialog.show(dlg)
+			.then(function(answer) {
+				console.log('Dialog closed '+answer);
+			}, function() {
+				console.log('Dialog canceled ');
+			});
+	 };
+
 });
 
 app.directive('micAddress', function() {
@@ -116,7 +143,7 @@ app.directive('micContact', function() {
 	};
 });
 
-app.directive('micEnfant', function() {
+app.directive('micEnfant', function(BackendService) {
 	return {
 		restrict: 'E',
 		templateUrl: 'views/enfant.html',
@@ -128,6 +155,11 @@ app.directive('micEnfant', function() {
 			$scope.depose = function(e) {
 				// TODO save into service
 				e.status = 'depose';
+				BackendService.depose(e, function(resp) {
+					console.log(resp);
+				}, function(resp) {
+					console.log('error '+resp);
+				});
 			};
 
 			$scope.contactInfo = function(ev) {
@@ -179,6 +211,15 @@ app.filter('age', function() {
 		}
 		return new Date().getFullYear() - enfant.naissance.annee;
 	};
+});
+
+app.filter('status', function() {
+	return function(enfant) {
+		if (enfant.status && enfant.status == 'depose') {
+			return 'déposé';
+		}
+		return enfant.status;
+	}
 });
 
 app.controller('DeposerController', function($scope, BackendService) {	
@@ -240,6 +281,16 @@ app.controller('MenuController', function($scope, mdPanelRef, $location) {
 		$location.path(path);
 		mdPanelRef.close();
 	};
+});
+
+app.controller('DashboardController', function($scope, BackendService) {
+
+	BackendService.all(function(resp) {
+		$scope.data = resp.data;
+	}, function(resp) {
+		console.log(resp);
+	});	
+
 });
 
 /*

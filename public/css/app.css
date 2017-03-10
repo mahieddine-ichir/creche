@@ -69,3 +69,24 @@ md-toolbar {
 .capitalize {
 	text-transform: capitalize;
 }
+
+.list-title {
+  font-weight: bold;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: rgb(221, 221, 221);
+}
+
+.list-item {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgb(221, 221, 221);
+}
+
+.list-item:hover {
+  background-color: #f0f0f0!important;
+}
+
+.list-item.odd {
+  background-color: #f7f7f7;
+}

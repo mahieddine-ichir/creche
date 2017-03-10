@@ -1,0 +1,59 @@
+<!-- <h3>Liste des enfants</h3>
+<table class="table table-hover table-striped">
+	<thead>
+	<tr>
+		<th>Nom</th>
+		<th>Age</th>
+		<th/>
+		<th/>
+	</tr>
+	</thead>
+	<tbody>
+	<tr ng-repeat="e in data">
+		<td>{{e.name}}</td>
+		<td>{{e | age}}</td>
+		<td>
+			<md-button>
+    			Fiche
+  			</md-button>
+  		</td>
+		<td>
+			<md-button>
+    			<md-icon>edit</md-icon>
+  			</md-button>
+  		</td>
+	</tr>		
+	</tbody>
+</table>
+ -->
+
+<md-list flex>
+    <!-- <md-subheader class="md-no-sticky">Liste des enfants</md-subheader> -->
+    <h3>Liste des enfants</h3>
+    <md-list-item class="list-title">
+	    <h4 flex="30">Nom</h4>
+    	<h4 flex="10">Age</h4>
+    	<h4 flex="10">Aujourd'hui</h4>
+    </md-list-item>
+    <!-- <md-list-item ng-repeat="e in data" class="md-3-line" ng-click="null"> -->
+    <md-list-item ng-repeat="e in data" class="list-item" ng-class-odd="'odd'">
+    <!-- <span ng-class-even="'list-even'" flex layout="row"> -->
+    	<span flex="30">{{e.name}}</span> 
+    	<span flex="10">{{e | age}} ans</span>
+    	<span flex="10">{{e | status}}</span>
+      <!-- <img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{item.who}}" /> -->
+      <!-- <div class="md-list-item-text">
+        <h3>{{ item.who }}</h3>
+        <h4>{{ item.what }}</h4>
+        <p>{{ item.notes }}</p>
+        </div>
+       -->
+    <!-- </span> -->
+    <md-button class="md-secondary" ng-click="contactInfo(e, $event)">
+    	<md-icon>face</md-icon>
+  	</md-button>
+	<md-button class="md-secondary">
+    	<md-icon>edit</md-icon>
+  	</md-button>
+    </md-list-item>
+</md-list>

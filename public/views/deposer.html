@@ -8,15 +8,15 @@
 
 <md-divider></md-divider>
 
-<div class="column">
+<div>
 <md-input-container>
   <label>Tapez un nom pour filtrer</label>
   <md-icon>search</md-icon>
   <input ng-model="recherche" type="text">
 </md-input-container>
 
-<div layout="row" layout-wrap>
-  <span ng-repeat='e in enfants | filter:absent | filter:recherche' class="fade">
+<div layout="row" layout-align-xs="column" layout-wrap>
+  <span ng-repeat='e in enfants | filter:absent | filter:recherche' class="fade" flex-xs>
     <mic-enfant enfant="e"></mic-enfant>
   </span>
 </div>

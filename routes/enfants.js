@@ -1,6 +1,7 @@
 var router = require('express').Router();
 
 var data = [{
+	id: 1,
 	name: 'Mouloud Ben Messaoud',
 	naissance: {
 		annee : '2010',
@@ -9,6 +10,7 @@ var data = [{
 	},
 	image: 'images/jenkins.jpg'
 }, {
+	id: 2,
 	name: 'Mederreg Adil',
 	naissance: {
 		annee : '2011',
@@ -20,10 +22,11 @@ var data = [{
 		{
 			name: 'Mederreg Lotfi',
 			numero: '+213 1234567890',
-			adresse: '@enfant.adresse'
+			adresse: 'Les sources du bonheur, République démacratique du Rais'
 		}
 	]
 }, {
+	id: 3,
 	name: 'Thiziri ICHIR',
 	naissance: {
 		annee : '2013',
@@ -32,22 +35,22 @@ var data = [{
 	},
 	image: 'images/jenkins.jpg'
 }, {
+	id: 4,
 	name: 'Ania Mederreg',
 	naissance: {
 		annee : '2009',
 		mois : '02',
 		jour: '29'
 	},
-	status: "absent",
 	image: 'images/jenkins.jpg'
 }, {
+	id: 5,
 	name: 'Meissa Mederreg',
 	naissance: {
 		annee : '2012',
 		mois : '11',
 		jour: '11'
 	},
-	status: "absent",
 	image: 'images/jenkins.jpg'
 }];
 
@@ -59,6 +62,17 @@ router.post('/', function(req, resp, next) {
 	console.log(req.body);
 	data.push(req.body);
 	resp.json(req.body);
+});
+
+router.put('/:id', function(req, resp, next) {
+	console.log(req.body);
+	for (var i=0; i<data.length; i++) {
+		if (req.params.id == data[i].id) {
+			data[i] = req.body;
+			return data[i];
+		}
+	}
+	return resp.status(404);
 });
 
 module.exports = router;
